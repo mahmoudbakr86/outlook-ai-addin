@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Email Assistant</title>
+
+  <!-- Office JS -->
+  <script src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+  <link rel="stylesheet" href="taskpane.css" />
+</head>
+<body>
+  <div id="app" class="hidden">
+
+    <header>
+      <h1>AI Email Assistant</h1>
+    </header>
+
+    <section id="setup" class="card">
+      <label for="apiKey">OpenAI API key</label>
+      <input type="password" id="apiKey" placeholder="sk-..." />
+      <label for="model">Model</label>
+      <select id="model">
+        <option value="gpt-4o-mini">gpt-4o-mini (fast, cheap)</option>
+        <option value="gpt-4o">gpt-4o</option>
+        <option value="gpt-4.1">gpt-4.1</option>
+      </select>
+      <button id="saveKeyBtn">Save key on this device</button>
+      <p class="hint">Your key is stored only in this browser's local storage and sent directly to OpenAI. It never passes through any server of ours.</p>
+    </section>
+
+    <nav class="tabs">
+      <button class="tab-btn active" data-tab="draft">Draft/Reply</button>
+      <button class="tab-btn" data-tab="edit">Edit</button>
+      <button class="tab-btn" data-tab="search">Search</button>
+      <button class="tab-btn" data-tab="categorize">Categorize</button>
+    </nav>
+
+    <!-- DRAFT / REPLY TAB -->
+    <div id="tab-draft" class="tab-panel">
+      <section class="card">
+        <label for="instructions">What should the AI write?</label>
+        <textarea id="instructions" rows="4" placeholder="e.g. Write a polite reply declining the meeting and proposing next Tuesday instead."></textarea>
+
+        <label for="tone">Tone</label>
+        <select id="tone">
+          <option value="professional">Professional</option>
+          <option value="friendly">Friendly</option>
+          <option value="concise">Concise</option>
+          <option value="formal">Formal</option>
+          <option value="casual">Casual</option>
+        </select>
+
+        <button id="generateBtn">Generate draft</button>
+      </section>
+
+      <section class="card">
+        <label for="output">Generated draft</label>
+        <textarea id="output" rows="10" placeholder="Your AI-generated draft will appear here..."></textarea>
+        <div class="button-row">
+          <button id="regenerateBtn" disabled>Regenerate</button>
+          <button id="insertBtn" disabled>Insert into email</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- EDIT TAB -->
+    <div id="tab-edit" class="tab-panel hidden">
+      <section class="card">
+        <label for="editor">Email text to edit</label>
+        <textarea id="editor" rows="10" placeholder="Click 'Load current email' to pull in the text, or paste your own."></textarea>
+        <button id="loadEditorBtn">Load current email text</button>
+
+        <label class="spaced">Quick edits</label>
+        <div class="chip-row">
+          <button class="chip" data-action="grammar">Fix grammar &amp; spelling</button>
+          <button class="chip" data-action="formal">More formal</button>
+          <button class="chip" data-action="casual">More casual</button>
+          <button class="chip" data-action="shorten">Shorten</button>
+          <button class="chip" data-action="expand">Expand</button>
+          <button class="chip" data-action="summarize">Summarize</button>
+        </div>
+
+        <label for="customEdit" class="spaced">Or describe a custom edit</label>
+        <div class="button-row">
+          <input type="text" id="customEdit" placeholder="e.g. Remove the second paragraph" />
+          <button id="customEditBtn">Apply</button>
+        </div>
+
+        <div class="button-row spaced">
+          <button id="insertEditBtn" disabled>Insert edited text into email</button>
+        </div>
+      </section>
+    </div>
+
+    <!-- SEARCH TAB -->
+    <div id="tab-search" class="tab-panel hidden">
+      <section class="card">
+        <label for="searchTerm">Find in this email</label>
+        <div class="button-row">
+          <input type="text" id="searchTerm" placeholder="word or phrase..." />
+          <button id="searchBtn">Search</button>
+        </div>
+        <div id="searchResults" class="results"></div>
+      </section>
+    </div>
+
+    <!-- CATEGORIZE TAB -->
+    <div id="tab-categorize" class="tab-panel hidden">
+      <section class="card">
+        <p class="hint">Available while reading an email (categories are applied to received/saved messages, not new drafts).</p>
+        <button id="suggestCategoryBtn">Suggest category with AI</button>
+        <div id="categoryResult" class="results"></div>
+      </section>
+    </div>
+
+    <p id="status" class="status"></p>
+  </div>
+
+  <script src="taskpane.js"></script>
+</body>
+</html>
