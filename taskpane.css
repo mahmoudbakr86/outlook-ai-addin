@@ -1,0 +1,188 @@
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #f3f2f1;
+  color: #201f1e;
+  font-size: 14px;
+}
+
+.hidden { display: none; }
+
+header {
+  background: #10a37f;
+  color: white;
+  padding: 14px 16px;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.card {
+  background: white;
+  margin: 12px;
+  padding: 14px;
+  border-radius: 6px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+  margin-top: 10px;
+  font-size: 12.5px;
+  color: #444;
+}
+
+label:first-child { margin-top: 0; }
+
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #d1d1d1;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 13px;
+  resize: vertical;
+}
+
+textarea { min-height: 60px; }
+
+button {
+  background: #10a37f;
+  color: white;
+  border: none;
+  padding: 9px 14px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover:not(:disabled) { background: #0d8a6a; }
+
+button:disabled {
+  background: #c8c8c8;
+  cursor: not-allowed;
+}
+
+.button-row {
+  display: flex;
+  gap: 8px;
+}
+
+.button-row button { flex: 1; }
+
+.hint {
+  font-size: 11px;
+  color: #666;
+  margin-top: 6px;
+}
+
+.status {
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+  min-height: 16px;
+  margin: 4px 12px 16px;
+}
+
+.status.error { color: #c92a2a; }
+.status.success { color: #10a37f; }
+
+/* Tabs */
+.tabs {
+  display: flex;
+  margin: 12px 12px 0;
+  border-bottom: 1px solid #d1d1d1;
+}
+
+.tab-btn {
+  flex: 1;
+  background: none;
+  color: #444;
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 10px 4px;
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+  color: #10a37f;
+  border-bottom: 2px solid #10a37f;
+}
+
+.tab-btn:hover:not(.active) { background: #f3f2f1; }
+
+.tab-panel.hidden { display: none; }
+
+.spaced { margin-top: 16px; }
+
+/* Chips (quick edit buttons) */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.chip {
+  background: #eef8f5;
+  color: #0d8a6a;
+  border: 1px solid #bfe6da;
+  padding: 6px 10px;
+  border-radius: 14px;
+  font-size: 12px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.chip:hover:not(:disabled) { background: #d9f0e9; }
+
+/* Search / category results */
+.results {
+  margin-top: 10px;
+  font-size: 12.5px;
+}
+
+.result-count {
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.result-snippet {
+  background: #f8f8f7;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.result-snippet mark {
+  background: #ffe08a;
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+.category-pill {
+  display: inline-block;
+  background: #eef8f5;
+  color: #0d8a6a;
+  border: 1px solid #bfe6da;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+  margin-right: 6px;
+}
